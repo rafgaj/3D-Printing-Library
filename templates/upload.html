@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block title %}Upload{% endblock %}
+
+{% block main %}
+<div class="container mt-1">
+    <div class="row gx-3 gy-5">
+        <div class="col-md-4 mx-auto">
+            <div class="card border-primary mb-3 mx-auto" style="max-width: 25rem; ">
+                <div class="card-header">Upload file</div>
+                    <form class="p-3" method="POST" enctype="multipart/form-data" action="">   
+                        {{ form.hidden_tag() }}       
+                        <fieldset>
+                            <div>
+                                {{ form.file.label(class="form-label mt-4") }}
+                                
+                                {% if form.file.errors %}
+                                    {{ form.file(class="form-control is-invalid", placeholder="Upload file") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.file.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.file(class="form-control", placeholder="Upload file") }} 
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ form.name.label(class="form-label mt-4") }}
+                                
+                                {% if form.name.errors %}
+                                    {{ form.name(class="form-control is-invalid", placeholder="Name") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.name.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.name(class="form-control", placeholder="Name") }} 
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ form.desc.label(class="form-label mt-4") }}
+
+                                {% if form.desc.errors %}
+                                    {{ form.desc(class="form-control is-invalid", placeholder="Optional file description", autocomplete="off") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.desc.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.desc(class="form-control", placeholder="Optional file description", autocomplete="off") }}
+                                {% endif %}
+                            </div>    
+                            <div class="form-check form-switch mt-2">
+                                {{ form.private(class="form-check-input") }}
+                                {{ form.private.label(class="form-check-label") }}
+                            </div>       
+                        </fieldset>
+                        {{ form.submit(class="btn btn-primary mt-4 mb-2") }}
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}

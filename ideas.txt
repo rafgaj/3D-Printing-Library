@@ -1,0 +1,53 @@
+3. System Zarządzania Projektami dla Małych Zespołów z Tablicą Kanban
+
+    Opis: Aplikacja umożliwia zespołom zarządzanie projektami i zadaniami, z wizualizacją zadań w formie tablicy Kanban.
+    Funkcje:
+        Tworzenie projektów, dodawanie zadań i przypisywanie ich członkom zespołu.
+        Tablica Kanban z możliwością przenoszenia zadań między kolumnami („do zrobienia”, „w trakcie”, „zrobione”).
+        Komentarze i aktualizacje zadań, przypomnienia o terminach.
+    Technologie:
+        Python: Django lub Flask do obsługi backendu i zarządzania danymi.
+        SQL: Baza danych do przechowywania projektów, zadań, użytkowników i ich powiązań.
+        JavaScript: Interaktywny interfejs użytkownika (np. drag-and-drop na tablicy Kanban) z użyciem Vanilla JS lub frameworka jak Vue.js czy React.
+    Dodatkowe: Notyfikacje e-mail lub powiadomienia SMS, generowanie raportów z aktywności.
+
+
+1. System Zarządzania Biblioteką
+
+    Opis: Stwórz aplikację do zarządzania biblioteką, która pozwala użytkownikom przeglądać książki, wypożyczać je i śledzić ich dostępność.
+    Funkcje:
+        Panel administracyjny do dodawania i usuwania książek.
+        Rejestracja i logowanie użytkowników.
+        Historia wypożyczeń użytkowników.
+    Technologie:
+        Python: Flask lub Django.
+        SQL: Baza danych do przechowywania informacji o książkach, użytkownikach i wypożyczeniach.
+    Dodatkowe: Możesz dodać opcję przeszukiwania katalogu książek lub powiadomienia e-mail o zwrotach.
+
+
+5. Platforma do Zarządzania Wynajmem Książek z Systemem Rezerwacji
+
+    Opis: Aplikacja pozwalająca użytkownikom na wynajem książek, z systemem rezerwacji i powiadomień o dostępności.
+    Funkcje:
+        Przeglądanie dostępnych książek i ich rezerwacja.
+        Zarządzanie rezerwacjami, z przypomnieniami o terminach zwrotu.
+        Panel administracyjny do dodawania i edytowania książek.
+    Technologie:
+        Python: Django z Django ORM do obsługi danych.
+        SQL: Baza danych do przechowywania informacji o książkach, rezerwacjach i użytkownikach.
+        JavaScript: Dynamiczne formularze i interaktywne elementy do wyszukiwania i filtrowania książek.
+    Dodatkowe: System powiadomień e-mail, możliwość dodawania recenzji przez użytkowników, rekomendacje oparte na preferencjach użytkownika.
+
+
+10. Aplikacja do Zarządzania Projektem Budowy z Kalkulacją Kosztów
+
+    Opis: Narzędzie do planowania projektów budowlanych, z obliczaniem kosztów i zarządzaniem zasobami.
+    Funkcje:
+        Dodawanie zadań budowlanych, zasobów i harmonogramu.
+        Kalkulacja kosztów na podstawie zasobów, materiałów i czasu.
+        Zarządzanie dokumentacją projektową i aktualizacjami.
+    Technologie:
+        Python: Django do obsługi backendu i obliczeń kosztów.
+        SQL: Baza danych do przechowywania informacji o projektach, zasobach i kosztach.
+        JavaScript: Interaktywne kalendarze i dynamiczne widoki harmonogramów oraz kosztorysów.
+    Dodatkowe: Powiadomienia o zbliżających się terminach, możliwość tworzenia wykresów Gantta.

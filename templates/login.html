@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block title %}Log In{% endblock %}
+
+{% block main %}
+    
+<div class="container mt-1">
+    <div class="row gx-3 gy-5">
+        <div class="col-md-4 mx-auto">
+            <div class="card border-primary mb-3 mx-auto" style="max-width: 25rem; ">
+                <div class="card-header">Log In form</div>
+                    <form class="p-3" method="POST" action="">   
+                        {{ form.hidden_tag() }}       
+                        <fieldset>
+                            <div>
+                                {{ form.email.label(class="form-label mt-4") }}
+
+                                {% if form.email.errors %}
+                                    {{ form.email(class="form-control is-invalid", placeholder="Email") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.email.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.email(class="form-control", placeholder="Email") }} 
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ form.password.label(class="form-label mt-4") }}
+
+                                {% if form.password.errors %}
+                                    {{ form.passowrd(class="form-control is-invalid", placeholder="Password", autocomplete="off") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.password.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.password(class="form-control", placeholder="Password", autocomplete="off") }}
+                                {% endif %}
+                            </div>    
+                            <div class="form-check mt-2">
+                                {{ form.remember(class="form-check-input") }}
+                                {{ form.remember.label(class="form-check-label") }}
+                            </div>       
+                        </fieldset>
+                        {{ form.submit(class="btn btn-primary mt-4 mb-2") }}
+                        <div>
+                            <!--<small class="form-text text-muted"><a href="{{ url_for('forgot') }}">Forgot password?</a></small>-->
+                        </div>
+                    </form>
+            </div>
+            <div class="mx-auto" style="max-width: 25rem;"
+                ><small class="form-text text-muted">Don't have an account? <a href="{{ url_for('register') }}">Sign Up</a></small>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock main %}

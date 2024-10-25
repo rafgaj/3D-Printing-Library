@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}Library{% endblock %}
+
+{% block main %}
+<div class="container mt-1">
+
+    <div class="row gx-3 gy-5">
+        {% for box in boxes %}
+            <div class="col-md-4">
+                <a class="nav-link" href="{{ url_for('detail', model_id=box['id']) }}">
+                <div class="card mb-3">
+                    <h3 class="card-header {% if box['private'] == 1 %}bg-dark text-white{% endif %}">{{ box['name'] }}</h3>
+                    <img src="{{ box['thumbnail'] }}" class="img-fluid" alt="{{ box['name'] }}">
+                    <div class="card-footer {% if box['private'] == 1 %}bg-dark text-white{% endif %}">
+                        <small>Uploaded: {{ box['timestamp'] }}</small>
+                    </div>
+                </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+    
+    <div class="row gx-3 gy-3">
+        <div class="col-4 mx-auto">
+            <ul class="pagination pagination-lg justify-content-center">
+                {% if page > 1 %}
+                    <li class="page-item"><a class="page-link" href="{{ url_for('library', page=page-1) }}">Previous</a></li>
+                {% endif %}
+        
+                {% for num in range(1, total_pages + 1) %}
+                    <li class="{{ 'page-item active' if num == page else 'page-item' }}">
+                        <a class="page-link" href="{{ url_for('library', page=num) }}">{{ num }}</a>
+                    </li>
+                {% endfor %}
+        
+                {% if page < total_pages %}
+                    <li class="page-item"><a class="page-link" href="{{ url_for('library', page=page+1) }}">Next</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+    
+</div>
+  
+{% endblock main %}

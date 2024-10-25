@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  	<title>{% block title %}{% endblock title %}</title>
+  	<meta charset="utf-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<!-- http://getbootstrap.com/docs/5.3/ -->
+  	<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous"> -->
+  	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  	<link href="/static/css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body>
+
+	<div class="container-fluid p-5 bg-primary text-white text-center">
+		<h1>3D Printing Library</h1>
+		<p>Store, view, organize, and manage your 3D files for printing in one place.</p>
+	</div>
+
+	<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+		<div class="container-fluid">
+		<a class="navbar-brand" href="/">Home</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02"
+			aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarColor02">
+			<ul class="navbar-nav me-auto">
+			{% if session["user_id"] %}
+			<li class="nav-item">
+				<a class="nav-link" href="{{ url_for('library') }}">My Library</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{ url_for('upload') }}">Upload</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{ url_for('logout') }}">Log Out</a>
+			</li>
+			{% else %}
+			<li class="nav-item">
+				<a class="nav-link" href="{{ url_for('login') }}">Log In</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="{{ url_for('register') }}">Register</a>
+			</li>
+			{% endif %}
+			</ul> 
+			<form class="d-flex" action="{{ url_for('search') }}" method="GET">
+			<input class="form-control me-sm-2" type="search" placeholder="Search" name="query">
+			<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+		</div>
+	</nav>
+	
+	
+		{% with messages = get_flashed_messages(with_categories=true) %}
+			{% if messages %}
+				{% for category, message in messages%}
+				<div class="container px-4 py-2">
+					<div class="alert alert-dismissible alert-{{ category }}">
+						<button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+						{{ message }}
+					</div>
+				</div>
+				{% endfor %}	
+			{% endif %}
+		{% endwith %}
+	
+	
+	<main class="container py-5">
+		{% block main %}
+		{% endblock main %}
+	</main>
+
+</body>
+
+<footer>
+	<div class="container-fluid p-5 bg-dark text-white text-center">
+		<p>©2024 by Rafał Gajek. All rights reserved.</p>
+	</div>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+		// Adapted from https://stackoverflow.com/a/10162353
+		const html = '<!DOCTYPE ' +
+			document.doctype.name +
+			(document.doctype.publicId ? ' PUBLIC "' + document.doctype.publicId + '"' : '') +
+			(!document.doctype.publicId && document.doctype.systemId ? ' SYSTEM' : '') +
+			(document.doctype.systemId ? ' "' + document.doctype.systemId + '"' : '') +
+			'>\n' + document.documentElement.outerHTML;
+		document.querySelector('form[action="https://validator.w3.org/check"] > input[name="fragment"]').value = html;
+		});
+	</script>
+	{% block footer %}
+	{% endblock footer %}
+</footer>
+
+
+</html>
