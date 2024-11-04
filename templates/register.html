@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block main %}
+
+<div class="container mt-1">
+    <div class="row gx-3 gy-5">
+        <div class="col-md-4 mx-auto">
+            <div class="card border-primary mb-3 mx-auto" style="max-width: 25rem; ">
+                <div class="card-header">Registration form</div>
+                    <form class="p-3" method="POST" action="">   
+                        {{ form.hidden_tag() }}       
+                        <fieldset>
+                            <div>
+                                {{ form.username.label(class="form-label mt-4") }}
+
+                                {% if form.username.errors %}
+                                    {{ form.username(class="form-control is-invalid", placeholder="User Name") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.username.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.username(class="form-control", placeholder="User Name") }}
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ form.email.label(class="form-label mt-4") }}
+
+                                {% if form.email.errors %}
+                                    {{ form.email(class="form-control is-invalid", placeholder="Email") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.email.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.email(class="form-control", placeholder="Email") }} 
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ form.password.label(class="form-label mt-4") }}
+
+                                {% if form.password.errors %}
+                                    {{ form.passowrd(class="form-control is-invalid", placeholder="Password", autocomplete="off") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.password.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form.password(class="form-control", placeholder="Password", autocomplete="off") }}
+                                {% endif %}
+                            </div>
+                            <div>
+                                {{ form.password_confirm.label(class="form-label mt-4") }}
+
+                                {% if form.password_confirm.errors %}
+                                    {{ form.password_confirm(class="form-control  is-invalid", placeholder="Password", autocomplete="off") }}
+                                    <div class="invalid-feedback">
+                                        {% for error in form.password_confirm.errors %}
+                                            <span>{{ error }}</span>
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                {{ form.password_confirm(class="form-control", placeholder="Password", autocomplete="off") }}
+                                {% endif %}
+                            </div>                   
+                        </fieldset>
+                        {{ form.submit(class="btn btn-primary mt-4 mb-2") }}
+                    </form>
+            </div>
+            <div class="mx-auto" style="max-width: 25rem;"
+                ><small class="form-text text-muted">Already have an account? <a href="{{ url_for('login') }}">Log In</a></small>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock main %}
