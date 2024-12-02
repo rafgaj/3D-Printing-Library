@@ -1,13 +1,5 @@
 # 3D Printing Library and File Manager
 
-#### Video Demo: [3D Printing Library](https://youtu.be/x5dR0dKJBsw)
-
-> GitHub and EdX username: rafgaj
-
-> Wrocław, Poland
-
-> October 24, 2024
-
 > HEROKU host APP: https://stp-printing-library-a53ee90b930d.herokuapp.com/
 
 ### Description:
